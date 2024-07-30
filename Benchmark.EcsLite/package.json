@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "ecs.benchmark.ecslite": "github:cNoNim/ecs-benchmark-ecslite"
+  }
+}

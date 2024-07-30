@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Deterministic>True</Deterministic>
+        <EnforceExtendedAnalyzerRules>True</EnforceExtendedAnalyzerRules>
+        <EnableDefaultItems>false</EnableDefaultItems>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference ExcludeAssets="runtime" Include="Microsoft.CodeAnalysis.CSharp" Version="4.10.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <NpmPackageFile Include="package.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="node_modules\ecs.benchmark.core\Runtime\Benchmark.Core\SourceGenerators\Sources~\Benchmark.Generator\Benchmark.Generator\*.cs"/>
+    </ItemGroup>
+
+</Project>

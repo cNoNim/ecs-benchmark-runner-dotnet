@@ -1,0 +1,38 @@
+<Project>
+
+    <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+        <Deterministic>True</Deterministic>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
+        <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))"
+                          Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0"/>
+    </ItemGroup>
+
+    <Target Name="ComputeNpmPackageMetadata">
+        <ItemGroup>
+            <NpmPackageFile>
+                <StampFile>$([System.IO.Path]::Combine(`%(RootDir)%(Directory)`, 'node_modules', '.install-stamp'))</StampFile>
+                <WorkingDirectory>%(RootDir)%(Directory)</WorkingDirectory>
+                <Command Condition="'$(RestorePackagesWithLockFile)' != 'true'">npm install</Command>
+                <Command Condition="'$(RestorePackagesWithLockFile)' == 'true'">npm ci</Command>
+            </NpmPackageFile>
+        </ItemGroup>
+    </Target>
+
+    <Target Name="NpmInstall"
+            DependsOnTargets="ComputeNpmPackageMetadata"
+            Inputs="@(NpmPackageFile)"
+            Outputs="%(NpmPackageFile.StampFile)"
+            BeforeTargets="ResolveAssemblyReferences">
+        <Exec Command="@(NpmPackageFile->'%(Command)')" WorkingDirectory="%(WorkingDirectory)"/>
+        <Touch Files="@(NpmPackageFile->'%(StampFile)')" AlwaysCreate="true"/>
+    </Target>
+
+</Project>

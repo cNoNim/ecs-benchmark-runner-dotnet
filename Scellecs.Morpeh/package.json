@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "com.scellecs.morpeh": "https://gitpkg.vercel.app/scellecs/morpeh/Scellecs.Morpeh?stage-2024.1"
+  }
+}

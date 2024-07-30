@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <RootNamespace>Benchmark.Runner</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BenchmarkDotNet.TestAdapter" Version="0.13.12"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Benchmark.Core\Benchmark.Core.csproj"/>
+        <ProjectReference Include="..\Benchmark.DragonEcs\Benchmark.DragonEcs.csproj"/>
+        <ProjectReference Include="..\Benchmark.EcsLite\Benchmark.EcsLite.csproj"/>
+        <ProjectReference Include="..\Benchmark.Generator\Benchmark.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="..\Benchmark.Morpeh\Benchmark.Morpeh.csproj"/>
+    </ItemGroup>
+
+</Project>

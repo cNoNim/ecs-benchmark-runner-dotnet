@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <EnableDefaultItems>false</EnableDefaultItems>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <NpmPackageFile Include="package.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="node_modules\ecs.benchmark.core\Runtime\Benchmark.Core\**\*.cs"/>
+        <Compile Remove="node_modules\ecs.benchmark.core\Runtime\Benchmark.Core\SourceGenerators\**\*.cs"/>
+    </ItemGroup>
+
+</Project>

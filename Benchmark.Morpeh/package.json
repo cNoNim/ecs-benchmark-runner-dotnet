@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "ecs.benchmark.morpeh": "github:cNoNim/ecs-benchmark-morpeh"
+  }
+}

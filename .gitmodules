@@ -1,0 +1,3 @@
+[submodule "Submodules/DCFApixels.DragonECS"]
+	path = Submodules/DCFApixels.DragonECS
+	url = https://github.com/DCFApixels/DragonECS.git

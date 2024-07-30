@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <ImplicitUsings>disabled</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <EnableDefaultItems>false</EnableDefaultItems>
+        <DefineConstants>${DefineConstants};LEOECSLITE_NO_SANITIZE_CHECKS</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <NpmPackageFile Include="package.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="node_modules\com.leopotam.ecslite\src\*.cs"/>
+    </ItemGroup>
+
+</Project>

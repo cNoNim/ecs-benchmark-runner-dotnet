@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="coverlet.collector" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
+        <PackageReference Include="NUnit" Version="3.14.0"/>
+        <PackageReference Include="NUnit.Analyzers" Version="3.9.0"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="4.5.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="NUnit.Framework"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Benchmark.Core\Benchmark.Core.csproj"/>
+        <ProjectReference Include="..\Benchmark.DragonEcs\Benchmark.DragonEcs.csproj" />
+        <ProjectReference Include="..\Benchmark.EcsLite\Benchmark.EcsLite.csproj"/>
+        <ProjectReference Include="..\Benchmark.Generator\Benchmark.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="..\Benchmark.Morpeh\Benchmark.Morpeh.csproj"/>
+    </ItemGroup>
+
+</Project>

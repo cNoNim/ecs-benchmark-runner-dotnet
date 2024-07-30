@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "ecs.benchmark.dragonecs": "github:cNoNim/ecs-benchmark-dragonecs"
+  }
+}

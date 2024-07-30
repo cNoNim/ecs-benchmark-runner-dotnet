@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "ecs.benchmark.template": "github:cNoNim/ecs-benchmark-template"
+  }
+}
