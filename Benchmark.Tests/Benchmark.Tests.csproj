@@ -19,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Benchmark.ArchEcs\Benchmark.ArchEcs.csproj" />
         <ProjectReference Include="..\Benchmark.Core\Benchmark.Core.csproj"/>
         <ProjectReference Include="..\Benchmark.DragonEcs\Benchmark.DragonEcs.csproj" />
         <ProjectReference Include="..\Benchmark.EcsLite\Benchmark.EcsLite.csproj"/>
