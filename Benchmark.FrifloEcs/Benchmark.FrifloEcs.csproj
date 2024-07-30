@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Friflo.Engine.ECS" Version="2.2.0" />
+      <PackageReference Include="Friflo.Engine.ECS" Version="3.0.0-preview.6" />
     </ItemGroup>
 
 </Project>
