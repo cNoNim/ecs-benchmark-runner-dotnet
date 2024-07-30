@@ -40,6 +40,13 @@ public class HashTests
 				fail = true;
 				sb.AppendLine(assert.Message);
 			}
+			catch (Exception e)
+			{
+				fail = true;
+				sb.AppendLine(context.ToString());
+				sb.AppendLine(e.Message);
+				sb.AppendLine(e.StackTrace);
+			}
 
 		if (fail)
 			Assert.Fail(sb.ToString());

@@ -12,12 +12,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="node_modules\ecs.benchmark.morpeh\Runtime\Benchmark.Morpeh\**\*.cs"/>
+        <Compile Include="node_modules\ecs.benchmark.frifloecs\Runtime\Benchmark.FrifloEcs\**\*.cs"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Benchmark.Core\Benchmark.Core.csproj" />
-        <ProjectReference Include="..\Scellecs.Morpeh\Scellecs.Morpeh.csproj" />
+        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Friflo.Engine.ECS" Version="3.0.0-preview.6" />
     </ItemGroup>
 
 </Project>

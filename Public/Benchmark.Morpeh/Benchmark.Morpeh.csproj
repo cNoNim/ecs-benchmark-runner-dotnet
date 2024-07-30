@@ -12,12 +12,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="node_modules\ecs.benchmark.ecslite\Runtime\Benchmark.EcsLite\**\*.cs"/>
+        <Compile Include="node_modules\ecs.benchmark.morpeh\Runtime\Benchmark.Morpeh\**\*.cs"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Benchmark.Core\Benchmark.Core.csproj"/>
-        <ProjectReference Include="..\Leopotam.EcsLite\Leopotam.EcsLite.csproj"/>
+        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj" />
+        <ProjectReference Include="..\..\Dependencies\Public\Scellecs.Morpeh\Scellecs.Morpeh.csproj" />
     </ItemGroup>
 
 </Project>

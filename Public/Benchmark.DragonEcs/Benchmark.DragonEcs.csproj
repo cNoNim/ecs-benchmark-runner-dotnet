@@ -16,8 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Benchmark.Core\Benchmark.Core.csproj" />
-        <ProjectReference Include="..\DCFApixels.DragonECS\DCFApixels.DragonECS.csproj" />
+        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj" />
+        <ProjectReference Include="..\..\Dependencies\Public\DCFApixels.DragonECS\DCFApixels.DragonECS.csproj" />
     </ItemGroup>
 
 </Project>

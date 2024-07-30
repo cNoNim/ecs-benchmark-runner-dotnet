@@ -4,3 +4,5 @@ obj/
 node_modules/
 *.DotSettings.user
 BenchmarkDotNet.Artifacts/
+Private/
+*.Private.sln

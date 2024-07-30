@@ -12,15 +12,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="node_modules\ecs.benchmark.frifloecs\Runtime\Benchmark.FrifloEcs\**\*.cs"/>
+        <Compile Include="node_modules\ecs.benchmark.ecslite\Runtime\Benchmark.EcsLite\**\*.cs"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Benchmark.Core\Benchmark.Core.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Friflo.Engine.ECS" Version="3.0.0-preview.6" />
+        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj"/>
+        <ProjectReference Include="..\..\Dependencies\Public\Leopotam.EcsLite\Leopotam.EcsLite.csproj" />
     </ItemGroup>
 
 </Project>
