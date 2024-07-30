@@ -22,6 +22,7 @@
         <ProjectReference Include="..\Benchmark.Core\Benchmark.Core.csproj"/>
         <ProjectReference Include="..\Benchmark.DragonEcs\Benchmark.DragonEcs.csproj" />
         <ProjectReference Include="..\Benchmark.EcsLite\Benchmark.EcsLite.csproj"/>
+        <ProjectReference Include="..\Benchmark.FrifloEcs\Benchmark.FrifloEcs.csproj" />
         <ProjectReference Include="..\Benchmark.Generator\Benchmark.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
         <ProjectReference Include="..\Benchmark.Morpeh\Benchmark.Morpeh.csproj"/>
     </ItemGroup>

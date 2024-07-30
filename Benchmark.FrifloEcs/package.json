@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "ecs.benchmark.frifloecs": "github:cNoNim/ecs-benchmark-frifloecs"
+  },
+  "scripts": {
+    "git-update": "npm update ecs.benchmark.frifloecs"
+  }
+}

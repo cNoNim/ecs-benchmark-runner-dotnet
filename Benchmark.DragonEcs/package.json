@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "ecs.benchmark.dragonecs": "github:cNoNim/ecs-benchmark-dragonecs"
+  },
+  "scripts": {
+    "git-update": "npm update ecs.benchmark.dragonecs"
   }
 }

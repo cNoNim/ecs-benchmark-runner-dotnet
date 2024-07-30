@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "ecs.benchmark.core": "github:cNoNim/ecs-benchmark-core"
+  },
+  "scripts": {
+    "git-update": "npm update ecs.benchmark.core"
   }
 }

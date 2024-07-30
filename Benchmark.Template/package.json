@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "ecs.benchmark.template": "github:cNoNim/ecs-benchmark-template"
+  },
+  "scripts": {
+    "git-update": "echo npm update ecs.benchmark.template"
   }
 }

@@ -6,7 +6,7 @@
         <ImplicitUsings>disabled</ImplicitUsings>
         <Nullable>disable</Nullable>
         <EnableDefaultItems>false</EnableDefaultItems>
-        <DefineConstants>${DefineConstants};LEOECSLITE_NO_SANITIZE_CHECKS</DefineConstants>
+        <DefineConstants>$(DefineConstants);LEOECSLITE_NO_SANITIZE_CHECKS</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>

@@ -8,7 +8,7 @@
         <EnableDefaultItems>false</EnableDefaultItems>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-        <DefineConstants>${DefineConstants};DISABLE_DEBUG;DISABLE_POOLS_EVENTS;REFLECTION_DISABLED;DISABLE_CATH_EXCEPTIONS</DefineConstants>
+        <DefineConstants>$(DefineConstants);DISABLE_DEBUG;DISABLE_POOLS_EVENTS;REFLECTION_DISABLED;DISABLE_CATH_EXCEPTIONS</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>

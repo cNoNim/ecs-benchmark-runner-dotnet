@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "com.leopotam.ecslite": "github:Leopotam/ecslite"
+  },
+  "scripts": {
+    "git-update": "npm update com.leopotam.ecslite"
   }
 }
