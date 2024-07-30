@@ -55,25 +55,19 @@ public class HashTests
 		context.Setup(entityCount, framebuffer);
 		try
 		{
-			Span<uint> hashes = stackalloc uint[ticks];
+			var hashCode = new StableHashCode();
 			for (var i = 0; i < ticks; i++)
 			{
 				context.Step(i);
-				hashes[i] = framebuffer.HashCode;
+				hashCode.Add(framebuffer.Buffer);
 			}
 
 			TestContext.Out.WriteLine(context.ToString());
 			var sb = new StringBuilder();
 			foreach (var (tick, id, x, y, c) in framebuffer.Draws)
-				sb.AppendFormat(
-					"{0:0000},{1},{2},{3},{4}\n",
-					tick,
-					id,
-					x,
-					y,
-					c);
+				sb.Append($"{tick:0000},{id},{x},{y},{c}\n");
 			TestContext.Out.Write(sb.ToString());
-			var newHash = StableHash32.Hash(0, hashes);
+			var newHash = (uint) hashCode.ToHashCode();
 			if (hash != null)
 				Assert.That(newHash, Is.EqualTo(hash), context.ToString());
 			hash = newHash;

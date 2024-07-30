@@ -10,7 +10,7 @@ using BenchmarkDotNet.Parameters;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 
-namespace Benchmark.Tests.Performance.Properties;
+namespace Benchmark.Runner.Properties;
 
 public class DefaultConfig : ManualConfig
 {
@@ -21,8 +21,9 @@ public class DefaultConfig : ManualConfig
 		AddJob(defaultJob.WithRuntime(CoreRuntime.Core80));
 		AddJob(defaultJob.WithRuntime(NativeAotRuntime.Net80));
 		AddDiagnoser(MemoryDiagnoser.Default);
-		AddColumn(RankColumn.Arabic, RatioColumn.Default);
+		AddColumn(RankColumn.Arabic, RatioColumn.Default, HashColumn.Default);
 		Options |= ConfigOptions.DontOverwriteResults;
+		// Options |= ConfigOptions.DisableOptimizationsValidator;
 		Orderer =  new DefaultOrderer();
 	}
 
@@ -177,6 +178,90 @@ public class DefaultConfig : ManualConfig
 		public string Legend
 		{
 			get => "Mean of the ratio distribution ([Current]/[Min])";
+		}
+
+		public override string ToString() =>
+			ColumnName;
+	}
+
+	private class HashColumn : IColumn
+	{
+		public static readonly IColumn Default = new HashColumn();
+		private HashColumn() {}
+
+		public string GetValue(Summary summary, BenchmarkCase benchmarkCase)
+		{
+			foreach (var report in summary.Reports)
+			{
+				if (report.BenchmarkCase != benchmarkCase)
+					continue;
+
+				var hashes = GetHashesFromOutput(report, "// Hash: ");
+				if (hashes.Length == 0)
+					break;
+
+				var first = hashes[0];
+				return hashes.Any(h => h != first) ? $"!{first}" : $" {first}";
+			}
+
+			return "?";
+		}
+
+		private static string[] GetHashesFromOutput(BenchmarkReport report, string prefix)
+		{
+			return (
+				from executeResults in report.ExecuteResults
+				from extraOutputLine in executeResults.StandardOutput.Where(line => line.StartsWith(prefix))
+				select extraOutputLine[prefix.Length..]).ToArray();
+		}
+
+		public string GetValue(Summary summary, BenchmarkCase benchmarkCase, SummaryStyle style) =>
+			GetValue(summary, benchmarkCase);
+
+		public bool IsDefault(Summary summary, BenchmarkCase benchmarkCase) =>
+			false;
+
+		public bool IsAvailable(Summary summary) =>
+			true;
+
+		public string Id
+		{
+			get => nameof(HashColumn);
+		}
+
+		public string ColumnName
+		{
+			get => "Hash";
+		}
+
+		public bool AlwaysShow
+		{
+			get => true;
+		}
+
+		public ColumnCategory Category
+		{
+			get => ColumnCategory.Custom;
+		}
+
+		public int PriorityInCategory
+		{
+			get => 0;
+		}
+
+		public bool IsNumeric
+		{
+			get => false;
+		}
+
+		public UnitType UnitType
+		{
+			get => UnitType.Dimensionless;
+		}
+
+		public string Legend
+		{
+			get => "Hash";
 		}
 
 		public override string ToString() =>
