@@ -39,7 +39,7 @@ Benchmarks perform a complex performance comparison of ECS frameworks on a near-
 
 The benchmark is divided into repositories. 
 Each repository is an NPM package.
-Current repository integrate packages into runner project for dotnet.
+Current repository integrate packages into runner project for .Net.
 
 ### [Benchmark.Core Package](https://github.com/cNoNim/ecs-benchmark-core)
 
