@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "com.scellecs.morpeh": "https://gitpkg.vercel.app/scellecs/morpeh/Scellecs.Morpeh?stage-2024.1"
+    "com.scellecs.morpeh": "https://gitpkg.vercel.app/scellecs/morpeh/Scellecs.Morpeh?2024.1.0-rc49"
   },
   "scripts": {
     "git-update": "npm update com.scellecs.morpeh"
