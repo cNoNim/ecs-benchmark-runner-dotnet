@@ -11,7 +11,7 @@ Benchmarks perform a complex performance comparison of ECS frameworks on a near-
 |-----------------------------------------------------------:|:--------------------------------------------------------------------------------------------------|:-----------:|
 |                    [Arch](https://github.com/genaray/Arch) | [1.2.8.2-alpha](https://www.nuget.org/packages/Arch/1.2.8.2-alpha)<br/>[Arch.System](https://github.com/genaray/Arch.Extended) - [1.0.5](https://www.nuget.org/packages/Arch.System/1.0.5)<br/>[Arch.System.SourceGenerator](https://github.com/genaray/Arch.Extended) - [1.2.1](https://www.nuget.org/packages/Arch.System.SourceGenerator/1.2.1)|      ✅     |
 |       [DragonECS](https://github.com/DCFApixels/DragonECS) | [0.8.39](https://github.com/DCFApixels/DragonECS/commit/655541e543bc290f168fc7f597999c4e688494b1) |      ✅     |
-|      [FriFlo](https://github.com/friflo/Friflo.Engine.ECS) | [3.0.0-preview.6](https://www.nuget.org/packages/Friflo.Engine.ECS/3.0.0-preview.6)               |      ✅     |
+|      [FriFlo](https://github.com/friflo/Friflo.Engine.ECS) | [3.0.0-preview.7](https://www.nuget.org/packages/Friflo.Engine.ECS/3.0.0-preview.7)               |      ✅     |
 |          [LeoECSLite](https://github.com/Leopotam/ecslite) | [2024.5.22](https://github.com/Leopotam/ecslite/releases/tag/2024.5.22)                           |      ✅     |
 |               [Morpeh](https://github.com/scellecs/morpeh) | [2024.1.0-rc49](https://github.com/scellecs/morpeh/releases/tag/2024.1.0-rc49)                    |      ✅     |
 
