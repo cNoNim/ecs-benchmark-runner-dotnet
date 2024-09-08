@@ -5,6 +5,7 @@
         <LangVersion>11</LangVersion>
         <ImplicitUsings>disable</ImplicitUsings>
         <EnableDefaultItems>false</EnableDefaultItems>
+        <DefineConstants>$(DefineConstants);PURE_ECS</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
