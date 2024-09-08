@@ -13,19 +13,32 @@ public class HashTests
 	[TestCase(256,  16)]
 	[TestCase(2048, 32)]
 	public void Check(int entityCount, int ticks) =>
-		TestContexts(Contexts.Factories.Select(factory => factory.factory()), entityCount, ticks);
+		TestContexts(
+			Contexts.Factories.Select(factory => factory.factory()),
+			entityCount,
+			ticks,
+			true,
+			true);
 
 	[TestCase(16, 256)]
 	[TestCase(32, 1024)]
 	public void CheckLong(int entityCount, int ticks) =>
-		Check(entityCount, ticks);
+		TestContexts(
+			Contexts.Factories.Select(factory => factory.factory()),
+			entityCount,
+			ticks,
+			true,
+			false);
 
-	private static void TestContexts(IEnumerable<IContext> contexts, int entityCount, int ticks)
+	private static void TestContexts(
+		IEnumerable<IContext> contexts,
+		int entityCount,
+		int ticks,
+		bool checkHash,
+		bool log)
 	{
-		uint? hash = default;
-		var   fail = false;
-		var   sb   = new StringBuilder();
-		sb.AppendLine();
+		uint?          hash = default;
+		StringBuilder? sb   = null;
 		foreach (var context in contexts)
 			try
 			{
@@ -33,22 +46,26 @@ public class HashTests
 					context,
 					ref hash,
 					entityCount,
-					ticks);
+					ticks,
+					checkHash,
+					log);
 			}
 			catch (AssertionException assert)
 			{
-				fail = true;
+				sb ??= new StringBuilder();
+				sb.AppendLine();
 				sb.AppendLine(assert.Message);
 			}
 			catch (Exception e)
 			{
-				fail = true;
+				sb ??= new StringBuilder();
+				sb.AppendLine();
 				sb.AppendLine(context.ToString());
 				sb.AppendLine(e.Message);
 				sb.AppendLine(e.StackTrace);
 			}
 
-		if (fail)
+		if (sb is not null)
 			Assert.Fail(sb.ToString());
 	}
 
@@ -56,7 +73,9 @@ public class HashTests
 		IContext context,
 		ref uint? hash,
 		int entityCount,
-		int ticks)
+		int ticks,
+		bool checkHash,
+		bool log)
 	{
 		using var framebuffer = new Framebuffer(Common.FrameBufferWidth, Common.FrameBufferHeight, entityCount * ticks);
 		context.Setup(entityCount, framebuffer);
@@ -66,14 +85,21 @@ public class HashTests
 			for (var i = 0; i < ticks; i++)
 			{
 				context.Step(i);
-				hashCode.Add(framebuffer.Buffer);
+				if (checkHash)
+					hashCode.Add(framebuffer.Buffer);
 			}
 
-			TestContext.Out.WriteLine(context.ToString());
-			var sb = new StringBuilder();
-			foreach (var (tick, id, x, y, c) in framebuffer.Draws)
-				sb.Append($"{tick:0000},{id},{x},{y},{c}\n");
-			TestContext.Out.Write(sb.ToString());
+			TestContext.Out.WriteLine(context);
+			if (log)
+			{
+				var sb = new StringBuilder();
+				foreach (var (tick, id, x, y, c) in framebuffer.Draws)
+					sb.Append($"{tick:0000},{id},{x},{y},{c}\n");
+				TestContext.Out.Write(sb);
+			}
+			if (!checkHash)
+				return;
+
 			var newHash = (uint) hashCode.ToHashCode();
 			if (hash != null)
 				Assert.That(newHash, Is.EqualTo(hash), context.ToString());
