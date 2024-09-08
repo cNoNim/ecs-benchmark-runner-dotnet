@@ -234,7 +234,7 @@ wrap_before_declaration_lpar = false
 wrap_after_declaration_lpar = true
 wrap_before_declaration_rpar = false
 wrap_parameters_style = chop_if_long
-max_formal_parameters_on_line = 3
+max_formal_parameters_on_line = 4
 ## Constructor
 keep_existing_primary_constructor_declaration_parens_arrangement = false
 place_constructor_initializer_on_same_line = false
@@ -242,7 +242,7 @@ place_primary_constructor_initializer_on_same_line = false
 wrap_base_clause_style = chop_always
 wrap_ctor_initializer_style = chop_always
 wrap_primary_constructor_parameters_style = chop_if_long
-max_primary_constructor_parameters_on_line = 3
+max_primary_constructor_parameters_on_line = 4
 wrap_before_primary_constructor_declaration_lpar = false
 wrap_after_primary_constructor_declaration_lpar = true
 wrap_before_primary_constructor_declaration_rpar = false
@@ -310,7 +310,7 @@ max_array_initializer_elements_on_line = 8
 wrap_array_initializer_style = chop_if_long
 ## Invocations
 wrap_arguments_style = chop_if_long
-max_invocation_arguments_on_line = 3
+max_invocation_arguments_on_line = 4
 keep_existing_invocation_parens_arrangement = false
 wrap_before_invocation_lpar = false
 wrap_after_invocation_lpar = true
