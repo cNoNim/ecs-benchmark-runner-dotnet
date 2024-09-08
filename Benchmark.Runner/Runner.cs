@@ -34,7 +34,6 @@ public class Runner
 	public void Setup()
 	{
 		_framebuffer = new Framebuffer(Common.FrameBufferWidth, Common.FrameBufferHeight, EntityCount * Ticks);
-		Context?.Setup(EntityCount, _framebuffer);
 		Array.Clear(_hashes, 0, _hashes.Length);
 	}
 
@@ -43,17 +42,18 @@ public class Runner
 	{
 		if (Context is not {} context)
 			return;
+		context.Setup(EntityCount, _framebuffer);
 		for (var i = 0; i < Ticks; i++)
 		{
 			context.Step(i);
-			_hashes![i] = StableHash32.Hash(0, context.Framebuffer.Buffer);
+			_hashes[i] = StableHash32.Hash(0, context.Framebuffer.Buffer);
 		}
+		context.Cleanup();
 	}
 
 	[IterationCleanup]
 	public void Cleanup()
 	{
-		Context?.Cleanup();
 		_framebuffer.Dispose();
 		_framebuffer = default;
 		_hash        = StableHash32.Hash(0, _hashes);
