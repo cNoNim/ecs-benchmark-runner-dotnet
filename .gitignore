@@ -6,3 +6,4 @@ node_modules/
 BenchmarkDotNet.Artifacts/
 Private/
 *.Private.sln
+*.Private.cs
