@@ -4,7 +4,7 @@ using Benchmark.Core.Hash;
 
 namespace Benchmark.Tests;
 
-public class HashTests
+public partial class HashTests
 {
 	[TestCase(1,    1)]
 	[TestCase(2,    4)]
@@ -77,7 +77,10 @@ public class HashTests
 		bool checkHash,
 		bool log)
 	{
-		using var framebuffer = new Framebuffer(Common.FrameBufferWidth, Common.FrameBufferHeight, entityCount * ticks);
+		using var framebuffer = new Framebuffer(
+			Common.FrameBufferWidth,
+			Common.FrameBufferHeight,
+			log ? entityCount * ticks : 0);
 		context.Setup(entityCount, framebuffer);
 		try
 		{
