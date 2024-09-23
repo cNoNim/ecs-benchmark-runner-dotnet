@@ -4,7 +4,9 @@ using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Environments;
+using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Parameters;
 using BenchmarkDotNet.Reports;
@@ -17,13 +19,26 @@ public class DefaultConfig : ManualConfig
 	public DefaultConfig()
 	{
 		var defaultJob = Job.Default;
-		Add(BenchmarkDotNet.Configs.DefaultConfig.Instance);
 		AddJob(defaultJob.WithRuntime(CoreRuntime.Core80));
 		AddJob(defaultJob.WithRuntime(NativeAotRuntime.Net80));
-		AddDiagnoser(MemoryDiagnoser.Default);
-		AddColumn(RankColumn.Arabic, RatioColumn.Default, HashColumn.Default);
+		AddLogger(ConsoleLogger.Default);
+		AddExporter(MarkdownExporter.Default);
+		AddDiagnoser(new MemoryDiagnoser(new MemoryDiagnoserConfig(false)));
+		var instance = BenchmarkDotNet.Configs.DefaultConfig.Instance;
+		AddAnalyser(
+			instance.GetAnalysers()
+					.ToArray());
+		AddDiagnoser(
+			instance.GetDiagnosers()
+					.ToArray());
+		AddColumn(JobCharacteristicColumn.AllColumns);
+		AddColumn(StatisticColumn.Mean);
+		AddColumn(RatioColumn.Default);
+		AddColumn(HashColumn.Default);
+		HideColumns(StatisticColumn.Error, StatisticColumn.StdDev, StatisticColumn.Median);
+		HideColumns(TargetMethodColumn.Method);
+		HideColumns(nameof(Runner.EntityCount), nameof(Runner.Ticks));
 		Options |= ConfigOptions.DontOverwriteResults;
-		// Options |= ConfigOptions.DisableOptimizationsValidator;
 		Orderer =  new DefaultOrderer();
 	}
 
@@ -236,7 +251,7 @@ public class DefaultConfig : ManualConfig
 
 		public bool AlwaysShow
 		{
-			get => true;
+			get => false;
 		}
 
 		public ColumnCategory Category

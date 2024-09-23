@@ -18,7 +18,7 @@ public class Runner
 	[ParamsSource(nameof(Contexts))]
 	public IContext? Context { get; set; }
 
-	[Params(2048)]
+	[Params(16384)]
 	public int EntityCount { get; set; }
 
 	[Params(1024)]
@@ -46,7 +46,7 @@ public class Runner
 		for (var i = 0; i < Ticks; i++)
 		{
 			context.Step(i);
-			_hashes[i] = StableHash32.Hash(0, context.Framebuffer.Buffer);
+			_hashes[i] = StableHash32.Hash(0, context.Framebuffer.BufferSpan);
 		}
 		context.Cleanup();
 	}

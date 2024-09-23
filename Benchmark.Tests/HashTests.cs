@@ -37,8 +37,8 @@ public partial class HashTests
 		bool checkHash,
 		bool log)
 	{
-		uint?          hash = default;
-		StringBuilder? sb   = null;
+		uint?            hash       = default;
+		List<Exception>? exceptions = null;
 		foreach (var context in contexts)
 			try
 			{
@@ -50,23 +50,15 @@ public partial class HashTests
 					checkHash,
 					log);
 			}
-			catch (AssertionException assert)
-			{
-				sb ??= new StringBuilder();
-				sb.AppendLine();
-				sb.AppendLine(assert.Message);
-			}
+			catch (AssertionException) {}
 			catch (Exception e)
 			{
-				sb ??= new StringBuilder();
-				sb.AppendLine();
-				sb.AppendLine(context.ToString());
-				sb.AppendLine(e.Message);
-				sb.AppendLine(e.StackTrace);
+				exceptions ??= [];
+				exceptions.Add(e);
 			}
 
-		if (sb is not null)
-			Assert.Fail(sb.ToString());
+		if (exceptions != null)
+			throw new AggregateException(exceptions);
 	}
 
 	private static void Test(
@@ -89,16 +81,36 @@ public partial class HashTests
 			{
 				context.Step(i);
 				if (checkHash)
-					hashCode.Add(framebuffer.Buffer);
+					hashCode.Add(framebuffer.BufferSpan);
 			}
 
-			TestContext.Out.WriteLine(context);
 			if (log)
 			{
+				var draws = new List<string>();
+				foreach (var (tick, id, x, y, c) in framebuffer.DrawsSpan)
+					draws.Add($"{tick:0000},{id},{x},{y},{c}");
+				draws.Sort();
 				var sb = new StringBuilder();
-				foreach (var (tick, id, x, y, c) in framebuffer.Draws)
-					sb.Append($"{tick:0000},{id},{x},{y},{c}\n");
-				TestContext.Out.Write(sb);
+				foreach (var draw in draws)
+					sb.AppendLine(draw);
+				Directory.CreateDirectory("TestResults");
+				var dumpPath = $"TestResults/{context}_{entityCount}_{ticks}.dump";
+				File.WriteAllText(dumpPath, sb.ToString());
+				TestContext.AddTestAttachment(dumpPath, context.ToString());
+#if DEBUG
+				if (context is ILogs logs)
+				{
+					sb.Clear();
+					foreach (var (stamp, message) in logs.Logs)
+						sb.AppendLine($"{stamp}: {message}");
+					if (sb.Length > 0)
+					{
+						var logsPath = $"TestResults/{context}_{entityCount}_{ticks}.log";
+						File.WriteAllText(logsPath, sb.ToString());
+						TestContext.AddTestAttachment(logsPath, context.ToString());
+					}
+				}
+#endif
 			}
 			if (!checkHash)
 				return;

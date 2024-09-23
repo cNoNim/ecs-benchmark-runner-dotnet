@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "ecs.benchmark.archecs": "github:cNoNim/ecs-benchmark-archecs"
-  },
-  "scripts": {
-    "git-update": "npm update ecs.benchmark.archecs"
-  }
-}

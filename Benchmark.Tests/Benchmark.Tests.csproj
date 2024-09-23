@@ -30,4 +30,8 @@
         <ProjectReference Include="..\Private\Benchmark.*\Benchmark.*.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="$(OutputPath)\**\TestResults\*" />
+    </ItemGroup>
+
 </Project>
