@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <LangVersion>9</LangVersion>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>disable</ImplicitUsings>
         <EnableDefaultItems>false</EnableDefaultItems>
     </PropertyGroup>
@@ -17,7 +16,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj" />
-        <ProjectReference Include="..\..\Dependencies\Public\Scellecs.Morpeh\Scellecs.Morpeh.csproj" />
+        <PackageReference Include="Scellecs.Morpeh" Version="2024.1.1" />
     </ItemGroup>
 
 </Project>

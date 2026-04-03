@@ -100,15 +100,14 @@ public partial class HashTests
 #if DEBUG
 				if (context is ILogs logs)
 				{
-					sb.Clear();
-					foreach (var (stamp, message) in logs.Logs)
-						sb.AppendLine($"{stamp}: {message}");
-					if (sb.Length > 0)
+					var logsPath = $"TestResults/{context}_{entityCount}_{ticks}.log";
+					using (var file = new StreamWriter(logsPath))
 					{
-						var logsPath = $"TestResults/{context}_{entityCount}_{ticks}.log";
-						File.WriteAllText(logsPath, sb.ToString());
-						TestContext.AddTestAttachment(logsPath, context.ToString());
+						foreach (var (stamp, message) in logs.Logs)
+							file.WriteLine($"{stamp}: {message}");
 					}
+
+					TestContext.AddTestAttachment(logsPath, context.ToString());
 				}
 #endif
 			}
@@ -116,6 +115,7 @@ public partial class HashTests
 				return;
 
 			var newHash = (uint) hashCode.ToHashCode();
+			TestContext.Out.WriteLine($"hash({context}) = 0x{newHash:X8}");
 			if (hash != null)
 				Assert.That(newHash, Is.EqualTo(hash), context.ToString());
 			hash = newHash;

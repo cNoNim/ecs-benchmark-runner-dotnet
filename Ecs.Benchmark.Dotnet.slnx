@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Public/">
+    <Project Path="Public/Benchmark.DragonEcs/Benchmark.DragonEcs.csproj" />
+    <Project Path="Public/Benchmark.EcsLite/Benchmark.EcsLite.csproj" />
+    <Project Path="Public/Benchmark.FrifloEcs/Benchmark.FrifloEcs.csproj" />
+    <Project Path="Public/Benchmark.Morpeh/Benchmark.Morpeh.csproj" />
+  </Folder>
+  <Folder Name="/Dependencies/Public/">
+    <Project Path="Dependencies/Public/DCFApixels.DragonECS/DCFApixels.DragonECS.csproj" />
+    <Project Path="Dependencies/Public/Leopotam.EcsLite/Leopotam.EcsLite.csproj" />
+  </Folder>
+  <Project Path="Benchmark.Core/Benchmark.Core.csproj" />
+  <Project Path="Benchmark.Generator/Benchmark.Generator.csproj" />
+  <Project Path="Benchmark.Runner/Benchmark.Runner.csproj" />
+  <Project Path="Benchmark.Tests/Benchmark.Tests.csproj" />
+</Solution>

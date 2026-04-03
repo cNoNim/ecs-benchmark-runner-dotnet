@@ -19,8 +19,8 @@ public class DefaultConfig : ManualConfig
 	public DefaultConfig()
 	{
 		var defaultJob = Job.Default;
-		AddJob(defaultJob.WithRuntime(CoreRuntime.Core80));
-		AddJob(defaultJob.WithRuntime(NativeAotRuntime.Net80));
+		AddJob(defaultJob.WithRuntime(CoreRuntime.Core10_0));
+		AddJob(defaultJob.WithRuntime(NativeAotRuntime.Net10_0));
 		AddLogger(ConsoleLogger.Default);
 		AddExporter(MarkdownExporter.Default);
 		AddDiagnoser(new MemoryDiagnoser(new MemoryDiagnoserConfig(false)));
@@ -52,13 +52,13 @@ public class DefaultConfig : ManualConfig
 		public IEnumerable<BenchmarkCase> GetExecutionOrder(
 			ImmutableArray<BenchmarkCase> benchmarksCases,
 			IEnumerable<BenchmarkLogicalGroupRule>? order = null) =>
-			benchmarksCases.OrderBy(benchmarkCase => benchmarkCase.Job.Environment.Runtime.RuntimeMoniker)
+			benchmarksCases.OrderBy(benchmarkCase => benchmarkCase.Job.Environment.Runtime?.RuntimeMoniker.ToString())
 						   .ThenBy(benchmarkCase => benchmarkCase.Parameters, ParameterComparer.Instance);
 
 		public IEnumerable<BenchmarkCase> GetSummaryOrder(
 			ImmutableArray<BenchmarkCase> benchmarksCases,
 			Summary summary) =>
-			benchmarksCases.OrderBy(benchmarkCase => benchmarkCase.Job.Environment.Runtime.RuntimeMoniker)
+			benchmarksCases.OrderBy(benchmarkCase => benchmarkCase.Job.Environment.Runtime?.RuntimeMoniker.ToString())
 						   .ThenBy(benchmarkCase => benchmarkCase.Parameters, ParameterComparer.Instance)
 						   .ThenBy(benchmarksCase => summary[benchmarksCase]?.ResultStatistics?.Mean ?? 0);
 
