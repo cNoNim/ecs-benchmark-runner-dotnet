@@ -16,7 +16,6 @@
     <ItemGroup>
         <ProjectReference Include="..\Benchmark.Generator\Benchmark.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
         <ProjectReference Include="..\Public\Benchmark.*\Benchmark.*.csproj"/>
-        <ProjectReference Include="..\Private\Benchmark.*\Benchmark.*.csproj"/>
     </ItemGroup>
 
 </Project>
