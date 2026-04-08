@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <LangVersion>9.0</LangVersion>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <EnableDefaultItems>false</EnableDefaultItems>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <NpmPackageFile Include="package.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="node_modules\ecs.benchmark.staticecs\Runtime\Benchmark.StaticEcs\**\*.cs"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+        <PackageReference Include="FFS.StaticEcs.Debug" Version="2.0.3"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' != 'Debug'">
+        <PackageReference Include="FFS.StaticEcs" Version="2.0.3"/>
+    </ItemGroup>
+
+</Project>

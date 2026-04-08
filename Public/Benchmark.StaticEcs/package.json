@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "ecs.benchmark.staticecs": "github:cNoNim/ecs-benchmark-staticecs"
+  },
+  "scripts": {
+    "git-update": "npm update ecs.benchmark.staticecs"
+  }
+}

@@ -1,3 +1,6 @@
 [submodule "Submodules/DCFApixels.DragonECS"]
 	path = Submodules/DCFApixels.DragonECS
 	url = https://github.com/DCFApixels/DragonECS.git
+[submodule "Submodules/massive-ecs"]
+	path = Submodules/massive-ecs
+	url = https://github.com/nilpunch/massive-ecs.git

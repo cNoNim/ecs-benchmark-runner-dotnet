@@ -9,12 +9,41 @@ Benchmarks perform a complex performance comparison of ECS frameworks on a near-
 [**Unity Version**](https://github.com/cNoNim/ecs-benchmark-runner-unity)
 
 ### Frameworks:
-|                                                   ECS | Version                                                                                                                                                                                                                                                                                                                                            | Implemented |
-|------------------------------------------------------:|:------------------------------------------------------------------------|:-----------:|
-|  [DragonECS](https://github.com/DCFApixels/DragonECS) | [0.9.21](https://github.com/DCFApixels/DragonECS/releases/tag/0.9.21)   |      ✅     |
-| [FriFlo](https://github.com/friflo/Friflo.Engine.ECS) | [3.6.0](https://www.nuget.org/packages/Friflo.Engine.ECS/3.6.0)         |      ✅     |
-|     [LeoECSLite](https://github.com/Leopotam/ecslite) | [2025.4.22](https://github.com/Leopotam/ecslite/releases/tag/2025.4.22) |      ✅     |
-|          [Morpeh](https://github.com/scellecs/morpeh) | [2024.1.1](https://github.com/scellecs/morpeh/releases/tag/2024.1.1)    |      ✅     |
+
+|                                                           ECS | Version                                                                 | Implemented |
+|--------------------------------------------------------------:|:------------------------------------------------------------------------|:-----------:|
+|          [DragonECS](https://github.com/DCFApixels/DragonECS) | [0.9.21](https://github.com/DCFApixels/DragonECS/releases/tag/0.9.21)   |      ✅      |
+|         [FriFlo](https://github.com/friflo/Friflo.Engine.ECS) | [3.6.0](https://www.nuget.org/packages/Friflo.Engine.ECS/3.6.0)         |      ✅      |
+|             [LeoECSLite](https://github.com/Leopotam/ecslite) | [2025.4.22](https://github.com/Leopotam/ecslite/releases/tag/2025.4.22) |      ✅      |
+|        [Massive ECS](https://github.com/nilpunch/massive-ecs) | [v20.1.1](https://github.com/nilpunch/massive-ecs/tree/v20.1.1)         |      ✅      |
+|                  [Morpeh](https://github.com/scellecs/morpeh) | [2024.1.1](https://github.com/scellecs/morpeh/releases/tag/2024.1.1)    |      ✅      |
+| [StaticEcs](https://github.com/Felid-Force-Studios/StaticEcs) | [2.0.3](https://www.nuget.org/packages/FFS.StaticEcs/2.0.3)             |      ✅      |
+
+## Scenario
+
+All benchmark implementations run the same deterministic simulation.
+
+At startup, the benchmark creates `N` units. During spawn, each unit receives a type (`NPC`, `Hero`, or `Monster`), combat stats, position, and movement state. Each tick then runs the same gameplay pipeline: spawning and respawning, target selection, attack creation, damage application, movement, velocity updates, and rendering into a framebuffer.
+
+This makes the benchmark closer to a small RTS-like combat loop than to a synthetic ECS microbenchmark.
+
+## Tick Pipeline
+
+Each benchmark context executes the same logical steps:
+
+1. Spawn / Respawn / Kill
+2. Render current state into framebuffer
+3. Update unit sprite state
+4. Apply damage from pending attacks
+5. Create new attacks
+6. Move units
+7. Update velocity
+8. Advance simulation data
+
+## Validation
+
+Benchmark implementations are validated by shared tests.
+For the same entity count and tick count, all contexts must produce the same framebuffer hash. This ensures the comparison is based on equivalent simulation results, not on different behavior.
 
 ## Running
 
@@ -58,7 +87,9 @@ Each benchmark is a separate repository, integration is done through separate pr
 | [Dragon ECS](https://github.com/cNoNim/ecs-benchmark-dragonecs) | [Benchmark.DragonEcs](Public/Benchmark.DragonEcs) |
 | [FriFlo ECS](https://github.com/cNoNim/ecs-benchmark-frifloecs) | [Benchmark.FrifloEcs](Public/Benchmark.FrifloEcs) |
 | [LeoEcsLite](https://github.com/cNoNim/ecs-benchmark-ecslite)   | [Benchmark.EcsLite](Public/Benchmark.EcsLite)     |
+| [Massive ECS](https://github.com/cNoNim/ecs-benchmark-massiveecs) | [Benchmark.MassiveEcs](Public/Benchmark.MassiveEcs) |
 | [Morpeh](https://github.com/cNoNim/ecs-benchmark-morpeh)        | [Benchmark.Morpeh](Public/Benchmark.Morpeh)       |
+| [StaticEcs](https://github.com/cNoNim/ecs-benchmark-staticecs)  | [Benchmark.StaticEcs](Public/Benchmark.StaticEcs) |
 
 #### Dependencies
 

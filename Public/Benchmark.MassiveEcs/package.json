@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "ecs.benchmark.massiveecs": "github:cNoNim/ecs-benchmark-massiveecs"
+  },
+  "scripts": {
+    "git-update": "npm update ecs.benchmark.massiveecs"
+  }
+}
