@@ -23,6 +23,9 @@ public class BenchmarkConfig : ManualConfig
 		AddAnalyser(
 			instance.GetAnalysers()
 					.ToArray());
+		AddColumnProvider(
+			instance.GetColumnProviders()
+					.ToArray());
 		AddDiagnoser(
 			instance.GetDiagnosers()
 					.ToArray());
