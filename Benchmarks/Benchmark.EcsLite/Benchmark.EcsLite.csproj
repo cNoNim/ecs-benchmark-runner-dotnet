@@ -11,12 +11,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="node_modules\ecs.benchmark.dragonecs\Runtime\Benchmark.DragonEcs\**\*.cs"/>
+        <Compile Include="node_modules\ecs.benchmark.ecslite\Runtime\Benchmark.EcsLite\**\*.cs"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj" />
-        <ProjectReference Include="..\..\Dependencies\Public\DCFApixels.DragonECS\DCFApixels.DragonECS.csproj" />
+        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj"/>
+        <ProjectReference Include="..\..\Dependencies\Leopotam.EcsLite\Leopotam.EcsLite.csproj" />
     </ItemGroup>
 
 </Project>

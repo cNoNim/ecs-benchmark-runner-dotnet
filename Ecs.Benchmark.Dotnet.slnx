@@ -1,16 +1,16 @@
 <Solution>
-  <Folder Name="/Public/">
-    <Project Path="Public/Benchmark.DragonEcs/Benchmark.DragonEcs.csproj" />
-    <Project Path="Public/Benchmark.EcsLite/Benchmark.EcsLite.csproj" />
-    <Project Path="Public/Benchmark.FrifloEcs/Benchmark.FrifloEcs.csproj" />
-    <Project Path="Public/Benchmark.MassiveEcs/Benchmark.MassiveEcs.csproj" />
-    <Project Path="Public/Benchmark.Morpeh/Benchmark.Morpeh.csproj" />
-    <Project Path="Public/Benchmark.StaticEcs/Benchmark.StaticEcs.csproj" />
+  <Folder Name="/Benchmarks/">
+    <Project Path="Benchmarks/Benchmark.DragonEcs/Benchmark.DragonEcs.csproj" />
+    <Project Path="Benchmarks/Benchmark.EcsLite/Benchmark.EcsLite.csproj" />
+    <Project Path="Benchmarks/Benchmark.FrifloEcs/Benchmark.FrifloEcs.csproj" />
+    <Project Path="Benchmarks/Benchmark.MassiveEcs/Benchmark.MassiveEcs.csproj" />
+    <Project Path="Benchmarks/Benchmark.Morpeh/Benchmark.Morpeh.csproj" />
+    <Project Path="Benchmarks/Benchmark.StaticEcs/Benchmark.StaticEcs.csproj" />
   </Folder>
-  <Folder Name="/Dependencies/Public/">
-    <Project Path="Dependencies/Public/DCFApixels.DragonECS/DCFApixels.DragonECS.csproj" />
-    <Project Path="Dependencies/Public/Leopotam.EcsLite/Leopotam.EcsLite.csproj" />
-    <Project Path="Dependencies/Public/Massive/Massive.csproj" />
+  <Folder Name="/Dependencies/">
+    <Project Path="Dependencies/DCFApixels.DragonECS/DCFApixels.DragonECS.csproj" />
+    <Project Path="Dependencies/Leopotam.EcsLite/Leopotam.EcsLite.csproj" />
+    <Project Path="Dependencies/Massive/Massive.csproj" />
   </Folder>
   <Project Path="Benchmark.Core/Benchmark.Core.csproj" />
   <Project Path="Benchmark.Generator/Benchmark.Generator.csproj" />

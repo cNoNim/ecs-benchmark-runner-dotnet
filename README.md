@@ -80,16 +80,16 @@ Integration is done in the [Benchmark.Generator](Benchmark.Generator) project.
 
 ### Benchmark Projects
 
-Each benchmark is a separate repository, integration is done through separate projects in the [Public](Public) folder.
+Each benchmark is a separate repository, integration is done through separate projects in the [Benchmarks](Benchmarks) folder.
 
 |                                                      Repository | Project                                           |
 |----------------------------------------------------------------:|:--------------------------------------------------|
-| [Dragon ECS](https://github.com/cNoNim/ecs-benchmark-dragonecs) | [Benchmark.DragonEcs](Public/Benchmark.DragonEcs) |
-| [FriFlo ECS](https://github.com/cNoNim/ecs-benchmark-frifloecs) | [Benchmark.FrifloEcs](Public/Benchmark.FrifloEcs) |
-| [LeoEcsLite](https://github.com/cNoNim/ecs-benchmark-ecslite)   | [Benchmark.EcsLite](Public/Benchmark.EcsLite)     |
-| [Massive ECS](https://github.com/cNoNim/ecs-benchmark-massiveecs) | [Benchmark.MassiveEcs](Public/Benchmark.MassiveEcs) |
-| [Morpeh](https://github.com/cNoNim/ecs-benchmark-morpeh)        | [Benchmark.Morpeh](Public/Benchmark.Morpeh)       |
-| [StaticEcs](https://github.com/cNoNim/ecs-benchmark-staticecs)  | [Benchmark.StaticEcs](Public/Benchmark.StaticEcs) |
+| [Dragon ECS](https://github.com/cNoNim/ecs-benchmark-dragonecs) | [Benchmark.DragonEcs](Benchmarks/Benchmark.DragonEcs) |
+| [FriFlo ECS](https://github.com/cNoNim/ecs-benchmark-frifloecs) | [Benchmark.FrifloEcs](Benchmarks/Benchmark.FrifloEcs) |
+| [LeoEcsLite](https://github.com/cNoNim/ecs-benchmark-ecslite)   | [Benchmark.EcsLite](Benchmarks/Benchmark.EcsLite)     |
+| [Massive ECS](https://github.com/cNoNim/ecs-benchmark-massiveecs) | [Benchmark.MassiveEcs](Benchmarks/Benchmark.MassiveEcs) |
+| [Morpeh](https://github.com/cNoNim/ecs-benchmark-morpeh)        | [Benchmark.Morpeh](Benchmarks/Benchmark.Morpeh)       |
+| [StaticEcs](https://github.com/cNoNim/ecs-benchmark-staticecs)  | [Benchmark.StaticEcs](Benchmarks/Benchmark.StaticEcs) |
 
 #### Dependencies
 
@@ -107,7 +107,7 @@ Contains template project for benchmark integration.
 ### [Benchmark.Runner](Benchmark.Runner)
 
 Runner application runs benchmarks using [BenchmarkDotNet](https://benchmarkdotnet.org).
-Runner includes all benchmarks from the **Public** folder.
+Runner includes all benchmarks from the **Benchmarks** folder.
 Default configuration runs both `.NET 10` and `NativeAOT 10.0` jobs.
 
 ### [Benchmark.Tests](Benchmark.Tests)

@@ -2,10 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <LangVersion>9.0</LangVersion>
         <ImplicitUsings>disable</ImplicitUsings>
         <EnableDefaultItems>false</EnableDefaultItems>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,12 +11,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="node_modules\ecs.benchmark.massiveecs\Runtime\Benchmark.MassiveEcs\**\*.cs"/>
+        <Compile Include="node_modules\ecs.benchmark.dragonecs\Runtime\Benchmark.DragonEcs\**\*.cs"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj"/>
-        <ProjectReference Include="..\..\Dependencies\Public\Massive\Massive.csproj"/>
+        <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj" />
+        <ProjectReference Include="..\..\Dependencies\DCFApixels.DragonECS\DCFApixels.DragonECS.csproj" />
     </ItemGroup>
 
 </Project>

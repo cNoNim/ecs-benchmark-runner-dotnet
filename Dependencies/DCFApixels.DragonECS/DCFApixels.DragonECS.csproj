@@ -2,17 +2,16 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <LangVersion>9.0</LangVersion>
         <ImplicitUsings>disabled</ImplicitUsings>
         <Nullable>disable</Nullable>
         <EnableDefaultItems>false</EnableDefaultItems>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-        <DefineConstants>$(DefineConstants);MASSIVE_DISABLE_ASSERT</DefineConstants>
+        <DefineConstants>$(DefineConstants);DISABLE_DEBUG;DISABLE_POOLS_EVENTS;REFLECTION_DISABLED;DISABLE_CATH_EXCEPTIONS</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\..\..\Submodules\massive-ecs\Runtime\**\*.cs"/>
+        <Compile Include="..\..\Submodules\DCFApixels.DragonECS\src\**\*.cs"/>
     </ItemGroup>
 
 </Project>

@@ -2,8 +2,10 @@
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
+        <LangVersion>9.0</LangVersion>
         <ImplicitUsings>disable</ImplicitUsings>
         <EnableDefaultItems>false</EnableDefaultItems>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,12 +13,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="node_modules\ecs.benchmark.ecslite\Runtime\Benchmark.EcsLite\**\*.cs"/>
+        <Compile Include="node_modules\ecs.benchmark.massiveecs\Runtime\Benchmark.MassiveEcs\**\*.cs"/>
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\Benchmark.Core\Benchmark.Core.csproj"/>
-        <ProjectReference Include="..\..\Dependencies\Public\Leopotam.EcsLite\Leopotam.EcsLite.csproj" />
+        <ProjectReference Include="..\..\Dependencies\Massive\Massive.csproj"/>
     </ItemGroup>
 
 </Project>
