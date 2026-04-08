@@ -6,6 +6,7 @@
         <RootNamespace>Benchmark.Runner</RootNamespace>
         <OptimizationPreference>Speed</OptimizationPreference>
         <InvariantGlobalization>true</InvariantGlobalization>
+        <Nullable>enable</Nullable>
         <GenerateProgramFile>false</GenerateProgramFile>
     </PropertyGroup>
 

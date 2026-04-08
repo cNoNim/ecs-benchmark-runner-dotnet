@@ -4,6 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <Deterministic>True</Deterministic>
         <EnforceExtendedAnalyzerRules>True</EnforceExtendedAnalyzerRules>
+        <Nullable>enable</Nullable>
         <EnableDefaultItems>false</EnableDefaultItems>
     </PropertyGroup>
 
