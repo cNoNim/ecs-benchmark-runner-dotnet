@@ -3,9 +3,7 @@ using System.Text;
 using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
-using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Exporters;
-using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Parameters;
@@ -18,9 +16,6 @@ public class DefaultConfig : ManualConfig
 {
 	public DefaultConfig()
 	{
-		var defaultJob = Job.Default;
-		AddJob(defaultJob.WithRuntime(CoreRuntime.Core10_0));
-		AddJob(defaultJob.WithRuntime(NativeAotRuntime.Net10_0));
 		AddLogger(ConsoleLogger.Default);
 		AddExporter(MarkdownExporter.Default);
 		AddDiagnoser(new MemoryDiagnoser(new MemoryDiagnoserConfig(false)));
