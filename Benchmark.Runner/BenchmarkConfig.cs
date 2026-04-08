@@ -23,9 +23,8 @@ public class BenchmarkConfig : ManualConfig
 		AddAnalyser(
 			instance.GetAnalysers()
 					.ToArray());
-		AddColumnProvider(
-			instance.GetColumnProviders()
-					.ToArray());
+		AddColumnProvider(DefaultColumnProviders.Params);
+		AddColumnProvider(DefaultColumnProviders.Metrics);
 		AddDiagnoser(
 			instance.GetDiagnosers()
 					.ToArray());
@@ -33,8 +32,7 @@ public class BenchmarkConfig : ManualConfig
 		AddColumn(StatisticColumn.Mean);
 		AddColumn(RatioColumn.Default);
 		AddColumn(HashColumn.Default);
-		HideColumns(StatisticColumn.Error, StatisticColumn.StdDev, StatisticColumn.Median);
-		HideColumns(TargetMethodColumn.Method);
+		HideColumns(Column.Job);
 		HideColumns(nameof(Runner.EntityCount), nameof(Runner.Ticks));
 		Options |= ConfigOptions.DontOverwriteResults;
 		Orderer =  new DefaultOrderer();
@@ -195,6 +193,7 @@ public class BenchmarkConfig : ManualConfig
 		public override string ToString() =>
 			ColumnName;
 	}
+
 
 	private class HashColumn : IColumn
 	{
