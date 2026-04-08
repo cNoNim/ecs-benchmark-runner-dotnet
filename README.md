@@ -50,7 +50,7 @@ For the same entity count and tick count, all contexts must produce the same fra
 0. Install [.NET 10 SDK](https://dotnet.microsoft.com/download) and [NPM](https://nodejs.org/en/download/)
 1. Clone repository
    ```sh
-   git clone https://github.com/cNoNim/ecs-benchmark-runner-dotnet.git
+   git clone --recursive https://github.com/cNoNim/ecs-benchmark-runner-dotnet.git
    ```
 2. Run tests
    ```sh
