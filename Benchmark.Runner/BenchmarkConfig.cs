@@ -10,16 +10,16 @@ using BenchmarkDotNet.Parameters;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 
-namespace Benchmark.Runner.Properties;
+namespace Benchmark.Runner;
 
-public class DefaultConfig : ManualConfig
+public class BenchmarkConfig : ManualConfig
 {
-	public DefaultConfig()
+	public BenchmarkConfig()
 	{
 		AddLogger(ConsoleLogger.Default);
 		AddExporter(MarkdownExporter.Default);
 		AddDiagnoser(new MemoryDiagnoser(new MemoryDiagnoserConfig(false)));
-		var instance = BenchmarkDotNet.Configs.DefaultConfig.Instance;
+		var instance = DefaultConfig.Instance;
 		AddAnalyser(
 			instance.GetAnalysers()
 					.ToArray());
@@ -120,14 +120,13 @@ public class DefaultConfig : ManualConfig
 		public string GetValue(Summary summary, BenchmarkCase benchmarkCase)
 		{
 			var logicalGroup = summary.GetLogicalGroupForBenchmark(benchmarkCase)
-									  .Where(
-										   b =>
-										   {
-											   var statistics = summary[b]?.ResultStatistics;
-											   if (statistics != null)
-												   return statistics.Mean != 0.0;
-											   return false;
-										   })
+									  .Where(b =>
+									   {
+										   var statistics = summary[b]?.ResultStatistics;
+										   if (statistics != null)
+											   return statistics.Mean != 0.0;
+										   return false;
+									   })
 									  .Select(b => (benchmarkCase: b, mean: summary[b]!.ResultStatistics!.Mean))
 									  .ToArray();
 			var result = summary[benchmarkCase]?.ResultStatistics?.Mean;
