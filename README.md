@@ -59,7 +59,13 @@ For the same entity count and tick count, all contexts must produce the same fra
 3. Run benchmarks
 
    ```sh
-   dotnet run --project Benchmark.Runner -c Release --filter \*
+   dotnet run --project Benchmark.Runner -c Release -- --filter '*'
+   ```
+
+   Run benchmarks for both `.NET 10` and `NativeAOT 10.0`:
+
+   ```sh
+   dotnet run --project Benchmark.Runner -c Release -- --filter '*' --runtimes net10.0 nativeaot10.0
    ```
 
 ## Structure
@@ -108,7 +114,7 @@ Contains template project for benchmark integration.
 
 Runner application runs benchmarks using [BenchmarkDotNet](https://benchmarkdotnet.org).
 Runner includes all benchmarks from the **Benchmarks** folder.
-Default configuration runs both `.NET 10` and `NativeAOT 10.0` jobs.
+Additional runtime combinations can be selected via BenchmarkDotNet command line arguments such as `--runtimes net10.0 nativeaot10.0`.
 
 ### [Benchmark.Tests](Benchmark.Tests)
 
